@@ -10,16 +10,26 @@
  * @copyright     Copyright (c) The Sedona Conference® (https://thesedonaconference.org)
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-App::uses('AttendeeMetaController', 'AppController', 'Controller');
+App::uses('AppController', 'Controller');
 
 /**
- * State Bar Controller
+ * State Bar Plugin App Controller
  *
- * Manage the storage of Attendee state bar information
- * as Attendee meta data.
+ * @package StateBars
+ * @subpackage StateBars.controllers
  */
-class StateBarsController extends StateBarsAppController {
-    
-    public $scaffold = true;
-    
+class StateBarsAppController extends AppController {
+
+/**
+ * Default isAuthorized method
+ *
+ * This is called to see if a user (when logged in) is able to access an action
+ *
+ * @param array $user
+ * @return boolean True if allowed
+ */
+	public function isAuthorized($user) {
+		return parent::isAuthorized($user);
+	}
+
 }

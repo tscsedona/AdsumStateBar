@@ -10,16 +10,15 @@
  * @copyright     Copyright (c) The Sedona Conference® (https://thesedonaconference.org)
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-App::uses('AttendeeMetaController', 'AppController', 'Controller');
+App::uses('AppModel', 'Model');
+
+class StateBarsAppModel extends AppModel {
 
 /**
- * State Bar Controller
+ * Plugin name
  *
- * Manage the storage of Attendee state bar information
- * as Attendee meta data.
+ * @var string $plugin
  */
-class StateBarsController extends StateBarsAppController {
-    
-    public $scaffold = true;
+	public $plugin = 'AdsumStateBar';
     
 }
