@@ -13,23 +13,16 @@
 App::uses('AttendeeMetum', 'AppModel', 'Model');
 
 /**
- * AttendeeMetum Model
- *
- * @property Attendee $Attendee
+ * StateBar Model
  */
 class StateBar extends StateBarsAppModel {
     
+    public $name = 'StateBar';
+    
     public $useTable = 'attendee_meta';
     
-    public function loadStates() {
-        $file = new File('states.json');
-        $json = $file->read(true, 'r');
-        $json2array = json_decode($json);
-        
-        Debugger::dump($file);
-#        Debugger::dump($json);
-        
-        return $json2array;
+    public function reformatDataAsMetum($data) {
+        Debugger::dump($data);
     }
     
 }

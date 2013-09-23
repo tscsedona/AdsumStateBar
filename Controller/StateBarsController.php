@@ -20,15 +20,50 @@ App::uses('AttendeeMetaController', 'AppController', 'Controller');
  */
 class StateBarsController extends StateBarsAppController {
     
-   # public $scaffold;
+    public $uses = array('State', 'Attendee', 'AttendeeMetum');
     
-    public $uses = array('State', 'Attendee');
-    
+    /**
+     * add() method
+     * 
+     * Associates a new State Bar number with an Attendee
+     */
     public function add() {
+        if ($this->request->is('post')) {
+            $reformat = $this->reformatDataAsMetum($this->request->data);
+
+			if ($this->AttendeeMetum->save($reformat)) {
+				$this->Session->setFlash(__('The state bar number has been associated with the attendee.'), 'flash/success');
+				$this->redirect(array('controller' => 'attendees', 'action' => 'index', 'plugin' => false));
+			} else {
+				$this->Session->setFlash(__('The state bar number could not be saved. Please, try again.'), 'flash/error');
+			}
+            
+		}
         $attendees = $this->Attendee->find('list');
         $states = $this->State->find('list');
         
         $this->set(compact('states', 'attendees'));
+    }
+    
+    /**
+     * Reformat add() POST data in the AttendeeMetum format
+     * 
+     * @param type $data
+     * @todo move this to the model
+     */
+    protected function reformatDataAsMetum($data) {
+        $state = $this->State->findById($data['StateBars']['state_id'], array('fields' => 'abbreviation'));
+        $reformatted = array(
+            'AttendeeMetum' => array(
+                'attendee_id' => $data['StateBars']['attendee_id'],
+                'key'         => 'State.bar',
+                'value'       => $state['State']['abbreviation'] . '-' . $data['StateBars']['bar-number']
+            )
+        );
+        return $reformatted;
+#        Debugger::dump($state);
+#        Debugger::dump($data);
+#        Debugger::dump($reformatted);
     }
     
 }

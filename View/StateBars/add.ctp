@@ -4,7 +4,7 @@
 
         <div class="attendeeMeta form well well-small">
 
-            <?php echo $this->Form->create('AttendeeMetum', array('inputDefaults' => array('label' => false), 'class' => 'form form-horizontal')); ?>
+            <?php echo $this->Form->create('StateBars', array('inputDefaults' => array('label' => false), 'class' => 'form form-horizontal')); ?>
             <fieldset>
                 <h2><?php echo __('Add State Bar Number'); ?></h2>
                 <hr />

@@ -19,6 +19,6 @@ class StateBarsAppModel extends AppModel {
  *
  * @var string $plugin
  */
-	public $plugin = 'AdsumStateBar';
+	public $plugin = 'StateBars';
     
 }
