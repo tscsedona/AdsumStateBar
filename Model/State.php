@@ -10,26 +10,13 @@
  * @copyright     Copyright (c) The Sedona Conference® (https://thesedonaconference.org)
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-App::uses('AttendeeMetum', 'AppModel', 'Model');
+App::uses('AppModel', 'Model');
 
 /**
- * AttendeeMetum Model
- *
- * @property Attendee $Attendee
+ * (US) State Model
  */
-class StateBar extends StateBarsAppModel {
+class State extends StateBarsAppModel {
     
-    public $useTable = 'attendee_meta';
-    
-    public function loadStates() {
-        $file = new File('states.json');
-        $json = $file->read(true, 'r');
-        $json2array = json_decode($json);
-        
-        Debugger::dump($file);
-#        Debugger::dump($json);
-        
-        return $json2array;
-    }
+    # Nothing to see here yet
     
 }

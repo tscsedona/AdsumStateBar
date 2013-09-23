@@ -20,6 +20,15 @@ App::uses('AttendeeMetaController', 'AppController', 'Controller');
  */
 class StateBarsController extends StateBarsAppController {
     
-    public $scaffold = true;
+   # public $scaffold;
+    
+    public $uses = array('State', 'Attendee');
+    
+    public function add() {
+        $attendees = $this->Attendee->find('list');
+        $states = $this->State->find('list');
+        
+        $this->set(compact('states', 'attendees'));
+    }
     
 }
