@@ -42,7 +42,13 @@ class StateBarsController extends StateBarsAppController {
         $attendees = $this->Attendee->find('list');
         $states = $this->State->find('list');
         
-        $this->set(compact('states', 'attendees'));
+        # select a pre-defined attendee if one is passed
+        $presetAttendee = 1;
+        if ($this->params->pass) {
+            $presetAttendee = $this->params->pass[0];
+        }
+        
+        $this->set(compact('states', 'attendees', 'presetAttendee'));
     }
     
     /**

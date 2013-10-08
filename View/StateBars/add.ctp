@@ -1,7 +1,7 @@
 <div id="page-container" class="row-fluid">
 
     <div id="page-content" class="span6 offset3">
-
+        
         <div class="attendeeMeta form well well-small">
 
             <?php echo $this->Form->create('StateBars', array('inputDefaults' => array('label' => false), 'class' => 'form form-horizontal')); ?>
@@ -12,7 +12,7 @@
                 <div class="control-group">
                     <?php echo $this->Form->label('attendee_id', 'Attendee', array('class' => 'control-label')); ?>
                     <div class="controls">
-                        <?php echo $this->Form->input('attendee_id', array('class' => 'span12')); ?>
+                        <?php echo $this->Form->input('attendee_id', array('class' => 'span12', 'default' => $presetAttendee)); ?>
                     </div><!-- .controls -->
                 </div><!-- .control-group -->
 
